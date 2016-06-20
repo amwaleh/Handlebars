@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+    <script src="handlebars.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+<img src="logo.png" alt="" class="pull-left" width="54px" >
+  <h4>Watchy</h4>
+</nav>
+    <div class="container">
+        <script id="address-template" type="text/x-handlebars-template">
+        <div class="row">
+  <!-- /.col-lg-6 -->
+            <div class="container">
+                <div class="col-md-offset-2 col-lg-6 search-bar">
+                <div class="col-lg-4">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" disabled="true" type="button">year</button>
+      </span>
+      <input type="text" class="form-control" placeholder="2016" id="year">
+    </div><!-- /input-group -->
+  </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="search" placeholder="Search for..." value={{search}}>
+                        <span class="input-group-btn">
+				        <button class="submit btn btn-success" type="button">Go!</button>
+				      </span>
+                    </div>
+                    <!-- /input-group -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+            <!-- /.row -->
+    </div>
+    <ol class="col-md-offset-1 list-group primary ">
+    {{#if page}}
+    <div class="col-md-offset-2 pages">page {{page}}  {{#if total_pages}} of {{total_pages}} {{/if}}<br>
+    {{#if page_nav.first}}
+    <button type="button" class="back btn btn-primary"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+    {{/if}}
+</button> 
+Total movies found {{pages}}
+<button type="button" class="next btn btn-primary"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button></div>
+       {{/if}}
+        {{#each city.Search}}
+        <div class="panel panel-default col-lg-3 movie" style="background:url({{this.Poster}}); background-repeat: no-repeat;background-size:cover; ">
+            <div class="panel-heading movie-title">{{this.Title}}
+                <br>
+                <label class="label label-default"> <span class="glyphicon glyphicon-star" aria-hidden="true"></span>{{this.Year}}</label>
+                <label class="label label-default"> {{this.Type}}</label>
+                </p>
+            </div>
+            <div class="panel-body">
+                <div class="pull-right">
+                </div>
+            </div>
+        </div>
+        </li>
+        {{/each}}
+        </ul>
+        </script>
+        <div class="content-placeholder ">place holder</div>
+        </div> 
+
+        <script id="sketch-template" type="text/x-handlebars-template">
+
+
+        </script>
+        <div class="sketch-temp">
+        	here we get the page {{pagee}} 
+        	</div>
+</body>
+
+</html>
+<style>
+body{
+	background-color:gainsboro;
+}
+.movie {
+    height: 200px;
+    background-repeat: no-repeat;
+    min-width: 100px;
+    color: #fff;
+    text-align: left;
+}
+
+.movie:hover {
+    -webkit-transform: scale(3.25);
+    /* Safari and Chrome */
+    -moz-transform: scale(1.25);
+    /* Firefox */
+    -ms-transform: scale(1.25);
+    /* IE 9 */
+    -o-transform: scale(1.25);
+    /* Opera */
+    transform: scale(-1.25);
+    transform: scale(1.25);
+    z-index: 9999;
+    height: 400px;
+    display:block;
+}
+
+.movie-title {
+
+    left: 0;
+    width: 100% !important; 
+    text-align: center;
+    font-weight: 300;
+    color:#fff;
+}
+
+.panel-default>.panel-heading {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: #ddd;
+    bottom: 0;
+    margin: 0 auto;
+    position: absolute;
+    min-height: 40px;
+    text-align: center;
+}
+
+.panel {
+    margin-right: 10px;
+    margin-left: 10px;
+    border:1px solid purple;
+    padding :5px;
+}
+.search-bar{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.jumbotron{
+	background-color: #FFF;
+	color: #b29d85;
+	height: 200px;
+}
+.pages{
+	color:#333;
+	padding:20px;
+	font-weight: 200;
+}
+.pages button{
+	margin:5px;
+}
+input[type="text"]:focus,{ border-color: rgba(126, 239, 104, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+  outline: 0 none;}
+
+  nav img{
+  	margin-left:20px;
+  }
+  nav h4{
+  	color : #00A3FF;
+  }
+</style>
